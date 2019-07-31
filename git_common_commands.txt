@@ -1,0 +1,25 @@
+** Delete local branch
+$ git branch -D <branch_name>
+
+** Delete remote branch
+$ git push origin --delete <branch_name>
+
+** Déplacer une branche (A) sur une autre (B)
+$ git checkout A 
+$ git rebase A~ --onto B 
+
+** Modification du dernier commit
+$ git add 
+plus
+$ git commit --amend            -> modifier dernier commit et nom
+$ git commit --ament --no-edit  -> le contenu seulement
+
+** Modification du commit A 
+// ex: faute d'orthographe. On va faire mieux que "commit A j'ai fait une faute et commit B je l'ai enlevée". => Perte de temps pour celui qui fait la revue de code + on va plutôt essayer d'aller réintégrer la bonne orthographe tout de suite dans le commit A 
+// 2 étapes:
+// créer un commit de fixup:
+$ git commit --fixup A 
+// réécrire l'historique:
+git rebase -i A~ --autosquash (i: interactif, ~: le parent de A, --autosquash: placer le commit de fixup au bon endroit)
+
+
